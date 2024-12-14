@@ -1,0 +1,11 @@
+name: 'Contract'
+type: module
+description: 'Provides a custom Contract module.'
+core_version_requirement: ^10 || ^9
+package: Custom
+dependencies:
+  - drupal:node
+  - drupal:form
+  - drupal:block
+  - drupal:theme
+  

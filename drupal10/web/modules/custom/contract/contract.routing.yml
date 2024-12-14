@@ -1,0 +1,16 @@
+contract.form:
+  path: '/contract/form'
+  defaults:
+    _form: '\Drupal\contract\Form\ContractForm'
+    _title: 'Create Contract'
+  requirements:
+    _permission: 'access content'
+
+
+contract.table:
+  path: '/contract/table'
+  defaults:
+    _controller: '\Drupal\contract\Controller\ContractTable::contract_table'
+    _title: 'Create Contract'
+  requirements:
+    _permission: 'access content'

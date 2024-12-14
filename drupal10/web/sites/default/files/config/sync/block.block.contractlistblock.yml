@@ -1,0 +1,25 @@
+uuid: 9bf85d73-edb5-4920-a96d-88cded626b28
+langcode: en
+status: true
+dependencies:
+  module:
+    - contract
+    - system
+  theme:
+    - olivero
+id: contractlistblock
+theme: olivero
+region: content_above
+weight: -5
+provider: null
+plugin: contract_list_block
+settings:
+  id: contract_list_block
+  label: 'Contract List Block'
+  label_display: '0'
+  provider: contract
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '*'

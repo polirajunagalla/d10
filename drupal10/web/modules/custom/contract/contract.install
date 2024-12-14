@@ -1,0 +1,50 @@
+<?php
+
+use Drupal\node\Entity\NodeType;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Implements hook_install().
+ */
+function contract_install() {
+  // Create content type 'Contract'.
+  if (!NodeType::load('contract')) {
+    $content_type = NodeType::create([
+      'type' => 'contract',
+      'name' => 'Contract',
+    ]);
+    $content_type->save();
+  }
+
+  // Define fields for 'contract' content type.
+  $fields = [
+    'field_document_title' => 'Document Title',
+    'field_recipient_name' => 'Recipient Name',
+    'field_sender_name' => 'Sender Name',
+    'field_date' => 'Date',
+    'field_document_file' => 'Document File',
+  ];
+
+  foreach ($fields as $field_name => $label) {
+    // Check if the field storage already exists.
+    if (!FieldStorageConfig::loadByName('node', $field_name)) {
+      FieldStorageConfig::create([
+        'field_name' => $field_name,
+        'entity_type' => 'node',
+        'type' => $field_name === 'field_document_file' ? 'file' : 'string',
+      ])->save();
+    }
+
+    // Check if the field configuration exists for the bundle.
+    if (!FieldConfig::loadByName('node', 'contract', $field_name)) {
+      FieldConfig::create([
+        'field_name' => $field_name,
+        'entity_type' => 'node',
+        'bundle' => 'contract',
+        'label' => $label,
+        'required' => $field_name !== 'field_document_file',
+      ])->save();
+    }
+  }
+}

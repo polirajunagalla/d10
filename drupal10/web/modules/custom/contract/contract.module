@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function contract_theme() {
+  return [
+    'contract_table' => [
+        'template' => 'contract-table',
+        'path' => \Drupal::service('module_handler')->getModule('contract')->getPath() . '/templates',
+      'variables' => ['contracts' => NULL],
+    ],
+  ];
+}
+
+
+?>

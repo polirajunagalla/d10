@@ -1,0 +1,19 @@
+uuid: cc490739-438e-4142-8cc4-55b075189224
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recipient_name
+    - node.type.contract
+id: node.contract.field_recipient_name
+field_name: field_recipient_name
+entity_type: node
+bundle: contract
+label: 'Recipient Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
